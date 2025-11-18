@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R4 Barbers | Premium Barbering in Ipswich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #1A1D1A;
+            --charcoal: #252D25;
+            --white: #FFFFFF;
+            --gold: #6B8E6B;
+            --grey: #A0B0A0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 29, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--gold);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 29, 26, 0.6), rgba(26, 29, 26, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23252D25" width="1200" height="800"/><text x="50%" y="50%" font-family="Arial" font-size="120" fill="%236B8E6B" opacity="0.1" text-anchor="middle" dominant-baseline="middle">R4</text></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 120px);
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .hero .tagline {
+            font-size: clamp(20px, 3vw, 36px);
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero .sub-tagline {
+            font-size: clamp(16px, 2vw, 24px);
+            color: var(--white);
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 3px solid var(--gold);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 3px solid var(--gold);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(36px, 5vw, 64px);
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--grey);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Teaser */
+        .services-teaser {
+            background: var(--charcoal);
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--black);
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .service-card p {
+            color: var(--grey);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--black);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            color: var(--white);
+            margin: 30px 0 15px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--grey);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: var(--charcoal);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--gold);
+        }
+
+        .about-image span {
+            font-size: 120px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--charcoal);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: var(--black);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            border-color: var(--gold);
+        }
+
+        .team-photo {
+            height: 350px;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .team-info {
+            padding: 30px;
+        }
+
+        .team-info h3 {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .team-info .role {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-info p {
+            color: var(--grey);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .specialty-tag {
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services & Pricing */
+        .services {
+            background: var(--black);
+        }
+
+        .service-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: var(--charcoal);
+            border-left: 4px solid var(--gold);
+            gap: 20px;
+        }
+
+        .service-details {
+            flex: 1;
+        }
+
+        .service-details h3 {
+            font-size: 24px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .service-details p {
+            color: var(--grey);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .service-time {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .service-price {
+            font-size: 32px;
+            color: var(--gold);
+            font-weight: 900;
+            font-family: 'Bebas Neue', sans-serif;
+            white-space: nowrap;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: var(--charcoal);
+            text-align: center;
+        }
+
+        .booking-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        .booking-step {
+            padding: 40px 20px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 32px;
+            font-weight: 900;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .booking-step h3 {
+            font-size: 20px;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .booking-step p {
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        /* Gallery */
+        .gallery {
+            background: var(--black);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            height: 350px;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--gold);
+        }
+
+        .gallery-placeholder {
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 29, 26, 0.8);
+            color: var(--gold);
+            padding: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--charcoal);
+        }
+
+        .testimonial-slider {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--black);
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            color: var(--white);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Location & Contact */
+        .location {
+            background: var(--black);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .map-placeholder {
+            background: var(--charcoal);
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--gold);
+        }
+
+        .map-placeholder span {
+            font-size: 80px;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-item h4 {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item p {
+            color: var(--grey);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .info-item a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        .hours-table {
+            margin-top: 10px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--charcoal);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--grey);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            background: var(--black);
+            border: 2px solid var(--gold);
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(107, 142, 107, 0.2);
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--gold);
+            color: var(--black);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 64px;
+            color: var(--black);
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .team-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">R4 BARBERS</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#location">Contact</a></li>
+                <li><a href="#booking" class="cta-button" style="padding: 10px 25px; font-size: 12px;">Book Now</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>R4 BARBERS</h1>
+            <p class="tagline">Precision. Style. Confidence.</p>
+            <p class="sub-tagline">Ipswich's Premium Barbering Experience</p>
+            <a href="#booking" class="cta-button">Book Your Cut</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5000+</h3>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9★</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Teaser -->
+    <section class="services-teaser">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Premium cuts and grooming services delivered by expert barbers</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">✂️</div>
+                    <h3>Precision Cuts</h3>
+                    <p>Expert fades, tapers, and modern styles crafted to perfection</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🪒</div>
+                    <h3>Beard Grooming</h3>
+                    <p>Shape-ups, trims, and hot towel shaves for the perfect finish</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">👨‍🦱</div>
+                    <h3>Afro Specialist</h3>
+                    <p>Expert in all hair types and textures with precision techniques</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">✨</div>
+                    <h3>Full Grooming</h3>
+                    <p>Complete packages combining cut, beard, and finishing touches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>About R4 Barbers</h2>
+                    <p>Welcome to R4 Barbers, Ipswich's destination for premium men's grooming. We're more than just a barbershop—we're a community hub where style meets precision and every client walks out looking their absolute best.</p>
+                    
+                    <h3>Our Story</h3>
+                    <p>Founded with a passion for the craft, R4 Barbers has become synonymous with quality barbering in Ipswich. Our team brings together years of experience, cutting-edge techniques, and a genuine love for what we do.</p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>We believe every man deserves to look sharp and feel confident. Our mission is to deliver consistent, high-quality cuts in a welcoming environment that feels like home. Whether you're after a classic cut or the latest urban styles, we've got you covered.</p>
+                    
+                    <h3>What Sets Us Apart</h3>
+                    <p>• Expert barbers with 10+ years of experience<br>
+                    • Specialists in all hair types, including afro and textured hair<br>
+                    • Precision fades, line-ups, and modern styling<br>
+                    • Hot towel shaves and luxury beard grooming<br>
+                    • Premium products and meticulous attention to detail<br>
+                    • A welcoming, professional atmosphere</p>
+                </div>
+                <div class="about-image fade-in">
+                    <span>R4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet The Team</h2>
+                <p>Skilled professionals dedicated to your grooming excellence</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-photo">✂️</div>
+                    <div class="team-info">
+                        <h3>Marcus Johnson</h3>
+                        <p class="role">Master Barber & Owner</p>
+                        <p>With over 12 years in the game, Marcus is a fade specialist who's perfected the art of precision cutting. Known for his attention to detail and ability to bring any vision to life.</p>
+                        <div class="specialties">
+                            <span class="specialty-tag">Fades</span>
+                            <span class="specialty-tag">Line-ups</span>
+                            <span class="specialty-tag">Afro Hair</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo">🪒</div>
+                    <div class="team-info">
+                        <h3>David Roberts</h3>
+                        <p class="role">Senior Barber</p>
+                        <p>A traditional barber with modern skills, David excels at hot towel shaves and beard sculpting. His calm demeanor and expert hands make every appointment a luxury experience.</p>
+                        <div class="specialties">
+                            <span class="specialty-tag">Beard Work</span>
+                            <span class="specialty-tag">Hot Shaves</span>
+                            <span class="specialty-tag">Classic Cuts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo">👨‍🦱</div>
+                    <div class="team-info">
+                        <h3>Tyler Adams</h3>
+                        <p class="role">Barber & Style Specialist</p>
+                        <p>The youngest of the crew but with skills beyond his years. Tyler stays ahead of trends and specializes in contemporary urban styles, tapers, and creative designs.</p>
+                        <div class="specialties">
+                            <span class="specialty-tag">Modern Styles</span>
+                            <span class="specialty-tag">Designs</span>
+                            <span class="specialty-tag">Tapers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo">✨</div>
+                    <div class="team-info">
+                        <h3>James Mitchell</h3>
+                        <p class="role">Barber</p>
+                        <p>A versatile all-rounder who can do it all. James is great with kids, patient with first-timers, and delivers consistent quality cuts every single time.</p>
+                        <div class="specialties">
+                            <span class="specialty-tag">Kids Cuts</span>
+                            <span class="specialty-tag">All Styles</span>
+                            <span class="specialty-tag">Consistent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services & Pricing</h2>
+                <p>Transparent pricing for premium grooming services</p>
+            </div>
+            <div class="service-list">
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Skin Fade</h3>
+                        <p>Precision skin fade blended to perfection. From high to low, we'll create the exact fade you're after with razor-sharp lines.</p>
+                        <span class="service-time">⏱ 45 minutes</span>
+                    </div>
+                    <div class="service-price">£28</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Standard Cut</h3>
+                        <p>Classic haircut with scissor work and clipper techniques. Includes wash, cut, style, and finishing touches.</p>
+                        <span class="service-time">⏱ 35 minutes</span>
+                    </div>
+                    <div class="service-price">£24</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Beard Trim & Shape-Up</h3>
+                        <p>Professional beard sculpting and line-up. Includes trim, shaping, hot towel, and beard oil application.</p>
+                        <span class="service-time">⏱ 25 minutes</span>
+                    </div>
+                    <div class="service-price">£18</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Full Grooming Package</h3>
+                        <p>The complete experience: premium cut, beard work, hot towel treatment, and facial grooming. Walk out feeling like a new man.</p>
+                        <span class="service-time">⏱ 75 minutes</span>
+                    </div>
+                    <div class="service-price">£42</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Kids Cut (Under 12)</h3>
+                        <p>Patient, professional cuts for young gents. We'll make sure they look sharp and feel comfortable throughout.</p>
+                        <span class="service-time">⏱ 30 minutes</span>
+                    </div>
+                    <div class="service-price">£18</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Hot Towel Shave</h3>
+                        <p>Traditional barbering at its finest. Luxury hot towel shave with premium products for the smoothest finish.</p>
+                        <span class="service-time">⏱ 40 minutes</span>
+                    </div>
+                    <div class="service-price">£32</div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-details">
+                        <h3>Add-Ons</h3>
+                        <p>• Hair Design / Pattern (+£8)<br>
+                           • Eyebrow Trim (+£6)<br>
+                           • Head Massage (+£5)<br>
+                           • Premium Product Styling (+£4)</p>
+                        <span class="service-time">⏱ Variable</span>
+                    </div>
+                    <div class="service-price">FROM £4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-header">
+                <h2>Book Your Appointment</h2>
+                <p>Fast, easy booking in just a few clicks</p>
+            </div>
+            <div class="booking-steps">
+                <div class="booking-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Service</h3>
+                    <p>Select from our range of premium cuts and grooming services</p>
+                </div>
+                <div class="booking-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Pick Your Barber</h3>
+                    <p>Book with your favorite barber or try someone new</p>
+                </div>
+                <div class="booking-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Select Date & Time</h3>
+                    <p>Choose a slot that works for your schedule</p>
+                </div>
+                <div class="booking-step fade-in">
+                    <div class="step-number">4</div>
+                    <h3>Confirm & Go</h3>
+                    <p>Receive instant confirmation and show up looking forward to your cut</p>
+                </div>
+            </div>
+            <div style="margin-top: 40px;">
+                <p style="color: var(--grey); margin-bottom: 30px; font-size: 16px;">We use Setmore for seamless online booking. Click below to see real-time availability and secure your spot.</p>
+                <a href="https://r4barbers.setmore.com" target="_blank" class="cta-button">Book on Setmore</a>
+                <a href="tel:+441234567890" class="cta-button secondary" style="margin-left: 20px;">Call to Book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work</h2>
+                <p>See the quality and precision for yourself</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">✂️</div>
+                    <div class="gallery-label">Skin Fade</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">🪒</div>
+                    <div class="gallery-label">Beard Work</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">👨‍🦱</div>
+                    <div class="gallery-label">Afro Styles</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">✨</div>
+                    <div class="gallery-label">Line-Up</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">💈</div>
+                    <div class="gallery-label">Taper Fade</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">🔥</div>
+                    <div class="gallery-label">Hair Design</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">💼</div>
+                    <div class="gallery-label">Professional</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">👶</div>
+                    <div class="gallery-label">Kids Cuts</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">🌟</div>
+                    <div class="gallery-label">Shop Vibe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Clients Say</h2>
+                <p>Real reviews from satisfied customers</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Best barbers in Ipswich, hands down. Marcus gave me the cleanest fade I've ever had. The attention to detail is unreal. Won't go anywhere else now."</p>
+                    <p class="testimonial-author">— Jake M.</p>
+                </div>
+                <div class="testimonial fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Been coming here for over a year and never disappointed. David's beard work is next level. Professional, friendly, and always on point."</p>
+                    <p class="testimonial-author">— Michael T.</p>
+                </div>
+                <div class="testimonial fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Tyler understood exactly what I wanted. Great with textured hair and keeps up with all the latest styles. The vibe in the shop is perfect too."</p>
+                    <p class="testimonial-author">— Darnell S.</p>
+                </div>
+                <div class="testimonial fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Brought my son in for his first proper cut and James was amazing with him. Patient, professional, and my boy came out looking fresh. Highly recommend."</p>
+                    <p class="testimonial-author">— Chris P.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visit Us</h2>
+                <p>Find us in the heart of Ipswich</p>
+            </div>
+            <div class="location-content">
+                <div class="map-placeholder fade-in">
+                    <span>📍</span>
+                </div>
+                <div class="contact-info fade-in">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="info-item">
+                        <h4>Address</h4>
+                        <p>R4 Barbers<br>
+                        123 High Street<br>
+                        Ipswich, Suffolk<br>
+                        IP1 2AB, UK</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+441234567890">+44 1234 567890</a></p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@r4barbers.co.uk">info@r4barbers.co.uk</a></p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Opening Hours</h4>
+                        <div class="hours-table">
+                            <div class="hours-row">
+                                <span>Monday</span>
+                                <span>9:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Tuesday</span>
+                                <span>9:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Wednesday</span>
+                                <span>9:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Thursday</span>
+                                <span>9:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Friday</span>
+                                <span>9:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Saturday</span>
+                                <span>8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Sunday</span>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Parking</h4>
+                        <p>Free street parking available on nearby roads. Pay & display car park 2 minutes walk away on Crown Street.</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">📘</a>
+                            <a href="#" class="social-icon">📷</a>
+                            <a href="#" class="social-icon">🐦</a>
+                            <a href="#" class="social-icon">📺</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>R4 Barbers</h4>
+                    <p style="color: var(--grey); font-size: 14px; line-height: 1.8;">Ipswich's premier destination for men's grooming. Precision cuts, expert barbers, and a commitment to making you look your best.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services & Pricing</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Skin Fades</a></li>
+                        <li><a href="#services">Beard Grooming</a></li>
+                        <li><a href="#services">Hot Towel Shave</a></li>
+                        <li><a href="#services">Kids Cuts</a></li>
+                        <li><a href="#services">Full Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p style="color: var(--grey); font-size: 14px; margin-bottom: 15px;">Stay updated with exclusive offers and grooming tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 R4 Barbers. All rights reserved. | Designed for excellence in Ipswich, UK</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
